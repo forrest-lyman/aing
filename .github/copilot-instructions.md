@@ -1,5 +1,13 @@
 # Copilot Instructions for aing
 
+## OpenAI
+- always use `gpt-5-mini` as the default model
+- never set temp
+- set token limit to be sufficient 
+- use structured data
+- create and validate schemas with zod
+- gpt-5 uses `max_completion_tokens` not `max_tokens`
+
 ## Project Overview
 This is a CLI tool for generating Angular code using AI. It helps create components, pages, models, and services in an Angular project.
 
@@ -35,3 +43,7 @@ When generating Angular code, assume this structure:
 - Keep functions focused and single-purpose
 - Export interfaces and types for reusability
 - Handle errors explicitly with meaningful messages
+
+## Agents
+
+An agent is a file in src/agents.

@@ -17,16 +17,29 @@ export interface Project {
 }
 
 export default async function getProject(): Promise<Project> {
-    const root = getProjectRoot()
-    return {
-        root,
-        resources: {
-            components: [],
-            pages: [],
-            models: [],
-            services: []
-        }
-    };
+    try {
+        const root = getProjectRoot();
+        return {
+            root,
+            resources: {
+                components: [],
+                pages: [],
+                models: [],
+                services: []
+            }
+        };
+    } catch (error) {
+        // Not in an Angular project
+        return {
+            root: '',
+            resources: {
+                components: [],
+                pages: [],
+                models: [],
+                services: []
+            }
+        };
+    }
 }
 
 export function getProjectRoot(): string {

@@ -10,8 +10,22 @@ if (!input) {
   process.exit(1);
 }
 
+// Handle Ctrl+C gracefully
+process.on('SIGINT', () => {
+  console.log('\nOperation cancelled');
+  process.exit(0);
+});
+
 async function main() {
-  await prompt(input);
+  try {
+    await prompt(input);
+    console.log('completed');
+  } catch (error) {
+    if (error instanceof Error) {
+      console.error('Error:', error.message);
+    }
+    process.exit(1);
+  }
 }
 
-main().then(() => console.log('completed'));
+main();
